@@ -4,12 +4,18 @@ Ajouter des colonne supplémentaire dans wordpress
 ## exemple 1 :Basic exemple 
 	
   ```
+  add_action('acf/init',function(){
+
     new_column('yt','Facebook',false,['post']);	
+   });
   ```
   
 ## exemple 2 : Ajouter le l'ordre
   ```
+ add_action('acf/init',function(){
+
     new_column('yt','Facebook',true,['post']);	
+  });
   ```
   
 ## exemple 3 : Overider le rendu de la valeur de chaque ligne
