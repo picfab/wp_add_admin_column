@@ -106,11 +106,14 @@ function new_column(
 	$allow_pts=['post'],
 	$newFunction=null
 	){
-		new create_admin_column($field_id,
-			$field_name,
-			$sortable,
-			$allow_pts,
-			$newFunction
-		);
+		add_action('acf/init',function(){
+
+			new create_admin_column($field_id,
+				$field_name,
+				$sortable,
+				$allow_pts,
+				$newFunction
+			);
+		}
 
 }	
