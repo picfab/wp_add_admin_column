@@ -106,7 +106,6 @@ function new_column(
 	$allow_pts=['post'],
 	$newFunction=null
 	){
-		add_action('acf/init',function(){
 
 			new create_admin_column($field_id,
 				$field_name,
@@ -114,6 +113,5 @@ function new_column(
 				$allow_pts,
 				$newFunction
 			);
-		}
 
 }	
