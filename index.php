@@ -2,8 +2,8 @@ class create_admin_column{
 	private string $field_id;
 	private string $field_name;
 	private array $allow_pts;
-	private string $new_print_value;
-	// private function|null $new_print_value;
+	private string|null $new_print_value;
+
 	function __construct(
 		$field_id,
 		$field_name,
@@ -14,7 +14,7 @@ class create_admin_column{
 		$this->field_id = $field_id;
 		$this->field_name = $field_name;
 		$this->allow_pts= $allow_pts;
-		$this->new_print_value =  $new_print_value;
+		$this->new_print_value = $new_print_value;
 
 		$this->create_column();
 		if($sortable){
@@ -79,19 +79,19 @@ class create_admin_column{
 				$orderby = $query->get('orderby');
 						
 					if($orderby===$this->field_id){
-									$query->set( 'meta_query', array(
-										'relation' => 'OR',
-										array(
-												'key' => $this->field_id, 
-												'compare' => 'EXISTS'
-										),
-										array(
-												'key' => $this->field_id, 
-												'compare' => 'NOT EXISTS'
-										)
-								) );
-										$query->set('orderby', 'meta_value');
-										}
+						$query->set( 'meta_query', array(
+							'relation' => 'OR',
+							array(
+									'key' => $this->field_id, 
+									'compare' => 'EXISTS'
+							),
+							array(
+									'key' => $this->field_id, 
+									'compare' => 'NOT EXISTS'
+							)
+					) );
+					$query->set('orderby', 'meta_value');
+				}
 	
 			});
 		}
@@ -106,12 +106,10 @@ function new_column(
 	$allow_pts=['post'],
 	$newFunction=null
 	){
-
-			new create_admin_column($field_id,
-				$field_name,
-				$sortable,
-				$allow_pts,
-				$newFunction
-			);
-
+		new create_admin_column($field_id,
+			$field_name,
+			$sortable,
+			$allow_pts,
+			$newFunction
+		);
 }	
